@@ -20,12 +20,13 @@ export function Signin(){
                 }} className="p-2 m-2 border-2 rounded-md" type = "text" placeholder="password"></input>
                 <br />
                 <div className="flex justify-center mt-4 bg-purple-600 text-white mx-10 p-2 rounded-md hover:bg-purple-900">
-                    <Link href = "/main">
-                        <button onClick = {()=>{
-                        axios.post("/api/signin",{
+                    <Link href = "/main/dashboard">
+                        <button onClick = {async()=>{
+                        const response = await axios.post("/api/signin",{
                             username,
                             password,
                         })
+                        localStorage.setItem("token",response.data.token)
                         }}>Sign in</button>
                     </Link>
                 </div>

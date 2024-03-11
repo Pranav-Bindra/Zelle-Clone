@@ -1,7 +1,6 @@
 import connectMongoDB from '@/libs/mongodb';
 import { User, UserModel } from '@/models/User';
 import { NextRequest, NextResponse } from 'next/server';
-import jwt from 'jsonwebtoken';
 
 export async function POST(req: NextRequest) {
     const { username, password} : User
@@ -24,7 +23,8 @@ export async function POST(req: NextRequest) {
     }
     else{
         return NextResponse.json({
-            message:`User found logging in now`
+            message:`User found logging in now`,
+            token : username
         })
     }
 }

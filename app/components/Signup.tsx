@@ -31,14 +31,15 @@ export function Signup(){
                 }} className="p-2 m-2 border-2 rounded-md" type = "text" placeholder="lastName"></input>
                 <br />
                 <div className="flex justify-center mt-4 bg-purple-600 text-white mx-10 p-2 rounded-md hover:bg-purple-900">
-                    <Link href= "/main">
-                        <button onClick = {()=>{
-                        axios.post("/api/signup",{
+                    <Link href= "/main/dashboard">
+                        <button onClick = {async ()=>{
+                        const response = await axios.post("/api/signup",{
                             username,
                             password,
                             firstName,
                             lastName
                         })
+                        localStorage.setItem("token",response.data.token)
                     }}>Sign up</button>
                     </Link>
                     
