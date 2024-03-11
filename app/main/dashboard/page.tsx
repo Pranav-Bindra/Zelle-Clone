@@ -1,6 +1,6 @@
 import { Dashboard } from "../../components/Dashboard";
 
-export default function(){
+export default function dash(){
     return <div>
         <Dashboard></Dashboard>
     </div>

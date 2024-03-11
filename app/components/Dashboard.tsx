@@ -1,3 +1,4 @@
+
 "use client"
 
 import { useState, useEffect } from "react";
@@ -13,7 +14,7 @@ export function Dashboard() {
     // Fetch users
     const fetchUsers = async () => {
         try {
-            const response = await axios.get('/api/signup');
+            const response = await axios.get("/api/signup");
             if (response.data && response.data.user) {
                 setUsers(response.data.user);
             } else {
@@ -28,7 +29,7 @@ export function Dashboard() {
     const fetchBalance = async () => {
         if (!username) return; // Do not proceed if username is falsy
         try {
-            const response = await axios.post('/api/account', { username });
+            const response = await axios.post("/api/account", { username });
             if (response.data && response.data.balance) {
                 setBalance(response.data.balance);
             }
@@ -39,7 +40,7 @@ export function Dashboard() {
 
     useEffect(() => {
         // Load the username from localStorage and fetch users
-        const storedUsername = localStorage.getItem('token');
+        const storedUsername = localStorage.getItem("token");
         if (storedUsername) {
             setUsername(storedUsername); // Removed the [0].toUpperCase() to store the full username
         }
